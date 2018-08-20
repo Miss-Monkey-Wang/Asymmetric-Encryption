@@ -49,7 +49,7 @@ class AsymmetricEncryption:
         cipher_aes = AES.new(session_key, AES.MODE_CBC, b'0'*16)
         data = cipher_aes.decrypt(ciphertext)
 
-        data = data.decode().rstrip('\0').encode('utf-8')
+        data = data.rstrip(b'\0')
         wobj = open(filename+'_decrypted', 'wb')
         wobj.write(data)
         wobj.close()
